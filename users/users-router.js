@@ -5,7 +5,8 @@ const mw = require('../middlewares/middleware');
 
 
 router.get('/', mw.restricted, (req, res) => {
-    Users.find()
+  const department = req.decodedToken.department;
+    Users.findBy({department})
       .then(users => {
         res.json(users);
       })

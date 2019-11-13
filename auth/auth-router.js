@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 
 const Users = require('../users/users-model.js');
 const mw = require('../middlewares/middleware');
+const secret = process.env.SECRET;
 
 // for endpoints beginning with /api/auth
 router.post('/register', mw.validateNewUser, (req, res) => {
@@ -45,6 +46,7 @@ router.post('/register', mw.validateNewUser, (req, res) => {
     const payload = {
       subject: user.id,
       username: user.username,
+      department: user.department
     }
     const options = {
       expiresIn: '1d',
@@ -52,7 +54,7 @@ router.post('/register', mw.validateNewUser, (req, res) => {
   
     const result = jwt.sign(
       payload,
-      'shhhhhh!!!! keep it secret!',
+      secret,
       options,
     )
   
