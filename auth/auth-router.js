@@ -3,10 +3,11 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const Users = require('../users/users-model.js');
+const mw = require('../middlewares/middleware');
 
 // for endpoints beginning with /api/auth
-router.post('/register', (req, res) => {
-    let user = req.body;
+router.post('/register', mw.validateNewUser, (req, res) => {
+    let user = req.user;
     const hash = bcrypt.hashSync(user.password, 10); // 2 ^ n
     user.password = hash;
   
@@ -15,7 +16,7 @@ router.post('/register', (req, res) => {
         res.status(201).json(saved);
       })
       .catch(error => {
-        res.status(500).json(error);
+        res.status(500).json({message: `There was an error with this op ${error}`});
       });
   });
 
