@@ -1,0 +1,26 @@
+{
+  "name": "auth-iii-challenge",
+  "version": "1.0.0",
+  "description": "Auth III Module Challenge Using JSON WEB TOKEN",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "Temitope Akinsoto",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.19.0",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.19.1",
+    "sqlite3": "^4.0.9"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "nodemon": "^1.19.1"
+  }
+}
